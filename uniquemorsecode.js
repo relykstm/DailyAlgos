@@ -22,3 +22,5 @@ var uniqueMorseRepresentations = function(words) {
     
 
 };
+
+uniqueMorseRepresentations(["zen", "jen", "end", "gig"]);
