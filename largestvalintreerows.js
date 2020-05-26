@@ -4,11 +4,9 @@ var largestValues = function(root, arr=[], index=0) {
         return arr;
     }
     
-    if(arr[0] == null){
-        arr[0]=root.val;
-    }
-    
-    if(arr[index] == null || root.val > arr[index]){
+    if(arr[index] == null){
+        arr[index]=root.val;
+    }else if(root.val > arr[index]){
         arr[index]=root.val;
     }
     
