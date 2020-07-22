@@ -1,43 +1,42 @@
-//not accepted as solution - includes strings with matching start/ends
-
 var isPalindrone = function(string){
-    var bool = false;
-    var gnirts = ""
-    for(var i =string.length-1; i>=0; i--){
-        gnirts = gnirts + string[i]
+
+    for(var i =0; i< string.length/2; i++){
+        if(string[i] !== string[string.length-1-i]){
+            return false
+        }
     }
-    if(string == gnirts){
-        bool = true
-    }
-    return bool
+
+    return true
 }
 
-var returnCount = function(s, string, x,count = 0){
-    
-
-    
-    
-    for(var z = 0; z<s.length; z++){
-        if(isPalindrone(string)){
-            console.log(string)
-            count++
-        }
-        if(z != x){
-            string = string + s[z]
-        }
-    
+var createString = function(s, start, end){
+    var string = ""
+    for(var j=start; j<=end; j++){
+        string = string + s[j]
     }
-    
-    return count
+    return string
 }
 
 
 var countSubstrings = function(s) {
     var count = 0
     for(var x = 0; x<s.length; x++){
-        count += returnCount(s,s[x],x)  
+    
+        for(var z=0; z<s.length; z++){
+            if(z == x){
+                count++ 
+                continue
+            }
+            if(s[x] != s[z]){
+                continue
+            }
+            var string = createString(s, x, z)
+            if(isPalindrone(string) && string != ""){
+                count++
+            }
+        }
             
     }
 
-    return count-1;
+    return count;
 };
